@@ -8,13 +8,18 @@ import org.springframework.integration.feed.dsl.Feed;
 import org.springframework.integration.file.FileWritingMessageHandler;
 import org.springframework.integration.file.support.FileExistsMode;
 import org.springframework.integration.transformer.AbstractPayloadTransformer;
+import ru.gb.spring_integration.logger.LoggerSingleton;
 
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 @Configuration
 public class IntegrationConfig {
+
+    private Logger logger = LoggerSingleton.getInstance();
 
     @Bean
     public IntegrationFlow feedFlow() throws MalformedURLException {
@@ -27,7 +32,7 @@ public class IntegrationConfig {
 
     @Bean
     public AbstractPayloadTransformer<SyndEntry,String> extractLinkFromRSS(){
-
+        logger.log(Level.INFO, "Найдена новая новость");
         return new AbstractPayloadTransformer<SyndEntry, String>() {
             @Override
             protected String transformPayload(SyndEntry payload) {

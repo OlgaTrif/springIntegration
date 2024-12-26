@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE log SYSTEM "logger.dtd">
+<log>
+<record>
+  <date>2024-12-26T07:54:09.315953800Z</date>
+  <millis>1735199649315</millis>
+  <nanos>953800</nanos>
+  <sequence>3</sequence>
+  <logger>MyLogger</logger>
+  <level>INFO</level>
+  <class>ru.gb.spring_integration.config.IntegrationConfig</class>
+  <method>extractLinkFromRSS</method>
+  <thread>1</thread>
+  <message>Найдена новая новость</message>
+</record>
+</log>
