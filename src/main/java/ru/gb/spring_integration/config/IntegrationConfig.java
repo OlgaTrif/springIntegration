@@ -3,8 +3,6 @@ package ru.gb.spring_integration.config;
 import com.rometools.rome.feed.synd.SyndEntry;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.integration.annotation.ServiceActivator;
-import org.springframework.integration.annotation.Transformer;
 import org.springframework.integration.dsl.IntegrationFlow;
 import org.springframework.integration.feed.dsl.Feed;
 import org.springframework.integration.file.FileWritingMessageHandler;
@@ -20,7 +18,7 @@ public class IntegrationConfig {
 
     @Bean
     public IntegrationFlow feedFlow() throws MalformedURLException {
-        return IntegrationFlow.from(Feed.inboundAdapter(new URL("hhtps://lenta.ru/rss"), "news"),
+        return IntegrationFlow.from(Feed.inboundAdapter(new URL("https://lenta.ru/rss"), "news"),
         e -> e.poller(p -> p.fixedDelay(5000)))
                 .transform(extractLinkFromRSS())
                 .handle(messageHandler())
@@ -28,7 +26,6 @@ public class IntegrationConfig {
     }
 
     @Bean
-    //@Transformer
     public AbstractPayloadTransformer<SyndEntry,String> extractLinkFromRSS(){
 
         return new AbstractPayloadTransformer<SyndEntry, String>() {
@@ -40,7 +37,6 @@ public class IntegrationConfig {
     }
 
     @Bean
-    //@ServiceActivator
     public FileWritingMessageHandler messageHandler(){
         FileWritingMessageHandler handler = new FileWritingMessageHandler(
                 new File("D:/GEEKBRAINS/Spring/spring_integration/infos"));
