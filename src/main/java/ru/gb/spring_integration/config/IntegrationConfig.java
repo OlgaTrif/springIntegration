@@ -19,8 +19,6 @@ import java.util.logging.Logger;
 @Configuration
 public class IntegrationConfig {
 
-    private Logger logger = LoggerSingleton.getInstance();
-
     @Bean
     public IntegrationFlow feedFlow() throws MalformedURLException {
         return IntegrationFlow.from(Feed.inboundAdapter(new URL("https://lenta.ru/rss"), "news"),
@@ -32,7 +30,8 @@ public class IntegrationConfig {
 
     @Bean
     public AbstractPayloadTransformer<SyndEntry,String> extractLinkFromRSS(){
-        logger.log(Level.INFO, "Найдена новая новость");
+        Logger logger = LoggerSingleton.getInstance();
+        logger.log(Level.INFO, "Начата запись");
         return new AbstractPayloadTransformer<SyndEntry, String>() {
             @Override
             protected String transformPayload(SyndEntry payload) {

@@ -2,15 +2,15 @@
 <!DOCTYPE log SYSTEM "logger.dtd">
 <log>
 <record>
-  <date>2024-12-26T07:54:09.315953800Z</date>
-  <millis>1735199649315</millis>
-  <nanos>953800</nanos>
+  <date>2024-12-26T08:42:59.538704600Z</date>
+  <millis>1735202579538</millis>
+  <nanos>704600</nanos>
   <sequence>3</sequence>
   <logger>MyLogger</logger>
   <level>INFO</level>
   <class>ru.gb.spring_integration.config.IntegrationConfig</class>
   <method>extractLinkFromRSS</method>
   <thread>1</thread>
-  <message>Найдена новая новость</message>
+  <message>Начата запись</message>
 </record>
 </log>
